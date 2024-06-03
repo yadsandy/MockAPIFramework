@@ -1,0 +1,108 @@
+User Registration: POST /users/register
+Request JSON Schema: {
+"type": "object",
+"properties": {
+"username": {
+"type": "string"
+},
+"email": {
+"type": "string",
+"format": "email"
+},
+"password": {
+"type": "string",
+"minLength": 6
+}
+},
+"required": ["username", "email", "password"]
+}
+
+Response JSON Schema: {
+"type": "object",
+"properties": {
+"message": {
+"type": "string"
+}
+}
+}
+2. User Login: POST /users/login
+Request JSON Schema: {
+"type": "object",
+"properties": {
+"email": {
+"type": "string",
+"format": "email"
+},
+"password": {
+"type": "string",
+"minLength": 6
+}
+},
+"required": ["email", "password"]
+}
+Response JSON Schema: {
+"type": "object",
+"properties": {
+"message": {
+"type": "string"
+}
+}
+}
+3. Search Books: GET /books?search=query
+Request JSON Schema: There is no request body for this endpoint.
+
+Response JSON Schema: {
+"type": "array",
+"items": {
+"type": "object",
+"properties": {
+"id": {
+"type": "string"
+},
+"title": {
+"type": "string"
+},
+"author": {
+"type": "string"
+},
+"isbn": {
+"type": "string"
+}
+},
+"required": ["id", "title", "author", "isbn"]
+}
+}
+4. Add to Cart: POST /users/{userId
+}/cart
+Request JSON Schema: {
+"type": "object",
+"properties": {
+"bookId": {
+"type": "string"
+},
+"quantity": {
+"type": "integer",
+"minimum": 1
+}
+},
+"required": ["bookId", "quantity"]
+}
+Response JSON Schema: {
+"type": "object",
+"properties": {
+"message": {
+"type": "string"
+}
+}
+}
+5. Checkout: POST /users/{userId}/checkout
+Request JSON Schema: There is no request body for this endpoint.
+
+Response JSON Schema: {
+"type": "object",
+"properties": {
+"message": {
+"type": "string"
+}
+}
+}
